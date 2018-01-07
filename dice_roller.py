@@ -60,7 +60,7 @@ def perform_roll(message):
     failures = count_failures(rolled)
     glitch = check_if_glitch_occurred(failures, len(rolled))
 
-    message_array = 'Rzucam ' + str(len(rolled)) + ' kostkami z sukcesami od ' + str(success_threshold) +  '\noto wyniki rzutu: \n' + str(rolled[0:]) + '\n liczba sukcesów: ' + str(successes)
+    message_array = 'Rzucam ' + str(len(rolled)) + ' kostkami z sukcesami od ' + str(success_threshold) + '\noto wyniki rzutu: \n' + str(rolled[0:]) + '\n liczba sukcesów: ' + str(successes)
     if glitch:
         glitch_message = '\nliczba jedynek: ' + str(failures) + '\nZgrzyt!'
         message_array += glitch_message

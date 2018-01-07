@@ -72,24 +72,3 @@ class DiceRoller:
         roll_parameters.roll_parameters['successes'] = self.successes
         roll_parameters.roll_parameters['failures'] = self.failures
         roll_parameters.roll_parameters['tens'] = self.tens
-
-
-success_threshold = 7
-
-
-def set_success_threshold_to(new_success_threshold):
-    global success_threshold
-    success_threshold = new_success_threshold
-
-
-def reset_success_threshold():
-    set_success_threshold_to(7)
-
-
-def change_success_threshold(message):
-    args = message.content.split(" ")
-    new_threshold = int(args[1])
-    if new_threshold < 1 or new_threshold > 10:
-        return 'Porżnęło Cię? Nic nie zmieniam Ty chory pojebie ```'
-    set_success_threshold_to(new_threshold)
-    return 'W następnym rzucie będę miał sukcesy od ' + str(success_threshold) + '```'

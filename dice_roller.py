@@ -1,21 +1,21 @@
 import random
 import gif_database
+import roll_parameters
 
 
 class DiceRoller:
 
-    def __init__(self, given_success_threshold):
-        self.success_threshold = given_success_threshold
+    def __init__(self):
+        self.success_threshold = roll_parameters.roll_parameters['success_threshold']
         self.results = [0]
-
         self.dice_number = 0
 
         self.successes = 0
         self.failures = 0
 
         self.tens = 0
-        self.critical_failures = 0
 
+        self.critical_failures = 0
         self.glitch = False
 
     # Dice Rolling
@@ -24,6 +24,7 @@ class DiceRoller:
         self.__roll_multiple_times()
         self.__evaluate_roll_output()
         self.__check_glitch()
+        self.__export_roll_parameters()
         return self.__output_roll_result()
 
     def __prepare_dice(self, message):
@@ -66,6 +67,11 @@ class DiceRoller:
         if self.glitch:
             result += gif_database.random_fail()
         return result
+
+    def __export_roll_parameters(self):
+        roll_parameters.roll_parameters['successes'] = self.successes
+        roll_parameters.roll_parameters['failures'] = self.failures
+        roll_parameters.roll_parameters['tens'] = self.tens
 
 
 success_threshold = 7

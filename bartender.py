@@ -32,7 +32,7 @@ def validate_command(message):
 
 @client.event
 async def on_message(message):
-    roller = dice_roller.DiceRoller(7)
+    roller = dice_roller.DiceRoller()
     if message_starts_with(message, 'sukcesy'):
         await client.send_message(message.channel, '```' + dice_roller.change_success_threshold(message))
     if message_starts_with(message, 'rzuc') or message_starts_with(message, 'rzuć'):

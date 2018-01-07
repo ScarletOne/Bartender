@@ -21,7 +21,7 @@ class DiceRoller:
     # Dice Rolling
     def roll_dice(self, message):
         self.__prepare_dice(message)
-        self.__roll_multiple_times(self.dice_number)
+        self.__roll_multiple_times()
         self.__evaluate_roll_output()
         self.__check_glitch()
         return self.__output_roll_result()
@@ -35,9 +35,9 @@ class DiceRoller:
     def __roll_10s():
         return random.randrange(1, 11)
 
-    def __roll_multiple_times(self, number_of_times):
-        self.results = [0] * number_of_times
-        for i in range(number_of_times):
+    def __roll_multiple_times(self):
+        self.results = [0] * self.dice_number
+        for i in range(self.dice_number):
             self.results[i] = self.__roll_10s()
 
     def __evaluate_roll_output(self):

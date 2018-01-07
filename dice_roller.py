@@ -13,6 +13,12 @@ def reset_success_threshold():
     set_success_threshold_to(7)
 
 
+def change_success_threshold(message):
+    args = message.content.split(" ")
+    set_success_threshold_to(args[1])
+    return 'W następnym rzucie będę miał sukcesy od ' + str(success_threshold)
+
+
 def roll_dice():
     return random.randrange(1, 10)
 

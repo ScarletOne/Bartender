@@ -15,7 +15,10 @@ def reset_success_threshold():
 
 def change_success_threshold(message):
     args = message.content.split(" ")
-    set_success_threshold_to(int(args[1]))
+    new_threshold = int(args[1])
+    if new_threshold < 1 or new_threshold > 10:
+        return '``` Porżnęło Cię? Nic nie zmieniam Ty chory pojebie ```'
+    set_success_threshold_to(new_threshold)
     return '```W następnym rzucie będę miał sukcesy od ' + str(success_threshold) + '```'
 
 

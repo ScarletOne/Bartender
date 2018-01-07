@@ -49,9 +49,6 @@ async def on_message(message):
         await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
     if message_starts_with(message, 'pomusz'):
         await client.send_message(message.channel, manual.show_help())
-    if message_starts_with(message, 'drama') or message_starts_with(message, 'drama!'):
-        await client.send_message(message.channel, '```' + dice_roller.perform_drama_roll())
-
 
 
 client.run("Mzg5NzYyMDM5MTc1OTcwODI2.DRARvQ.rYou-m3OjU5c6zvXd4_seyb5GUw")

@@ -17,10 +17,6 @@ def change_success_description():
     change_success_command = ' > Sukcesy - zmienię od jakiej liczby będę liczył sukcesy następnego rzutu\n'
     return change_success_command
 
-def reactive_drama_description():
-    reactive_drama_command = ' > Drama - przerzucę wszystkie dziesiątki i wszystkie kostki, na których nie wypadł sukces z ostatniego rzutu'
-    return reactive_drama_command
-
 
 def show_help():
     text_manual = '```To wam mogę zaoferować: \n'
@@ -28,6 +24,5 @@ def show_help():
     text_manual += say_description()
     text_manual += roll_description()
     text_manual += change_success_description()
-    text_manual += reactive_drama_description()
     text_manual += '```'
     return text_manual

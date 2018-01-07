@@ -82,8 +82,10 @@ def perform_roll(number_of_dice):
 
 def perform_standard_roll(message):
     args = message.content.split(" ")
-    number_of_dice = int(args[1])
-    return perform_roll(number_of_dice)
+    if len(args) > 1 and args[1].isdigit():
+        number_of_dice = int(args[1])
+        return perform_roll(number_of_dice)
+    return 'Czekaj, ile tych kostek mam rzucić?```'
 
 
 def perform_drama_roll():

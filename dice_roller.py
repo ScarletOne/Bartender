@@ -16,7 +16,7 @@ def reset_success_threshold():
 def change_success_threshold(message):
     args = message.content.split(" ")
     set_success_threshold_to(int(args[1]))
-    return '```W następnym rzucie będę miał sukcesy od ' + str(success_threshold) +'```'
+    return '```W następnym rzucie będę miał sukcesy od ' + str(success_threshold) + '```'
 
 
 def roll_dice():

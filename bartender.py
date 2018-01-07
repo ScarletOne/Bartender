@@ -36,10 +36,6 @@ async def on_message(message):
         await client.send_message(message.channel, '```' + dice_roller.change_success_threshold(message))
     if message_starts_with(message, 'rzuc') or message_starts_with(message, 'rzuć'):
         await client.send_message(message.channel, '```' + dice_roller.perform_standard_roll(message))
-    if message_starts_with(message, 'atak') or message_starts_with(message, 'zaatakuj') or message_starts_with(message, 'atakuj'):
-        if dice_roller.success_threshold == 7:
-            dice_roller.set_success_threshold_to(6)
-        await client.send_message(message.channel, '```' + dice_roller.perform_standard_roll(message))
     if message_starts_with(message, 'powiedz'):
         args = message.content.split(" ")
         await client.send_message(message.channel, "%s" % (" ".join(args[1:])))

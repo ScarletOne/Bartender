@@ -32,6 +32,7 @@ def validate_command(message):
 
 @client.event
 async def on_message(message):
+    roller = dice_roller.DiceRoller()
     if message_starts_with(message, 'sukcesy'):
         await client.send_message(message.channel, '```' + dice_roller.change_success_threshold(message))
     if message_starts_with(message, 'rzuc') or message_starts_with(message, 'rzuć'):
@@ -43,5 +44,9 @@ async def on_message(message):
         await client.send_message(message.channel, manual.show_help())
     if message_starts_with(message, 'drama') or message_starts_with(message, 'drama!'):
         await client.send_message(message.channel, '```' + dice_roller.perform_drama_roll())
+    if message_starts_with(message, 'r!'):
+        print('Stół do rzucania kośćmi gotowy!')
+        result = roller.roll_dice(message)
+        await client.send_message(message.channel, result)
 
 client.run("Mzg5NzYyMDM5MTc1OTcwODI2.DRARvQ.rYou-m3OjU5c6zvXd4_seyb5GUw")

@@ -33,17 +33,19 @@ def validate_command(message):
 @client.event
 async def on_message(message):
     if message_starts_with(message, 'sukcesy'):
-        await client.send_message(message.channel, dice_roller.change_success_threshold(message))
+        await client.send_message(message.channel, '```' + dice_roller.change_success_threshold(message))
     if message_starts_with(message, 'rzuc') or message_starts_with(message, 'rzuć'):
-        await client.send_message(message.channel, dice_roller.perform_roll(message))
+        await client.send_message(message.channel, '```' + dice_roller.perform_standard_roll(message))
     if message_starts_with(message, 'atak') or message_starts_with(message, 'zaatakuj') or message_starts_with(message, 'atakuj'):
         if dice_roller.success_threshold == 7:
             dice_roller.set_success_threshold_to(6)
-        await client.send_message(message.channel, dice_roller.perform_roll(message))
+        await client.send_message(message.channel, '```' + dice_roller.perform_standard_roll(message))
     if message_starts_with(message, 'powiedz'):
         args = message.content.split(" ")
         await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
     if message_starts_with(message, 'pomusz'):
         await client.send_message(message.channel, manual.show_help())
+    if message_starts_with(message, 'drama') or message_starts_with(message, 'drama!'):
+        await client.send_message(message.channel, '```' + dice_roller.perform_drama_roll())
 
 client.run("Mzg5NzYyMDM5MTc1OTcwODI2.DRARvQ.rYou-m3OjU5c6zvXd4_seyb5GUw")

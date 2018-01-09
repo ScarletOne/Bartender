@@ -1,6 +1,6 @@
 import random
-import gif_database
-import roll_parameters
+from source import gif_database,\
+    roll_parameters
 
 
 class DiceRoller:

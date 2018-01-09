@@ -1,9 +1,6 @@
 import discord
-import client_id
-from discord.ext.commands import Bot
 from discord.ext import commands
-import asyncio
-import time
+from source import client_id
 import dice_roller
 import threshold_manipulator
 import manual

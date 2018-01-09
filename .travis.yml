@@ -2,9 +2,8 @@ sudo: required
 language: python
 python:
   - "3.6"
-  - "nightly"
 install:
   - pip install coverage
 script:
-  - coverage run test_bartender.py test
+  - python -m unittest
 after_success: coverage report

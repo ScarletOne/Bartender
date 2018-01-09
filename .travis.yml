@@ -4,6 +4,7 @@ python:
   - "3.6"
   - "nightly"
 install:
-  - pip install -U discord.py
+  - pip install coverage
 script:
-  - pytest
+  - coverage run test_bartender.py test
+after_success: coverage report

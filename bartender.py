@@ -32,6 +32,11 @@ def validate_command(message):
     return False
 
 
+def extract_content(message):
+    args = message.content.split(" ")
+    return args
+
+
 @client.event
 async def on_message(message):
     roller = dice_roller.DiceRoller()
@@ -39,7 +44,7 @@ async def on_message(message):
 
     if message_starts_with(message, 'sukcesy'):
         print('Nowy próg sukcesu')
-        result = manipulator.change_success_threshold(message)
+        result = manipulator.change_success_threshold(extract_content(message))
         await client.send_message(message.channel, result)
     if message_starts_with(message, 'rzuc') or message_starts_with(message, 'rzuć'):
         print('Stół do rzucania kośćmi gotowy!')

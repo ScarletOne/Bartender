@@ -1,5 +1,4 @@
-import dice_roller
-import roll_parameters
+from source import dice_roller, roll_parameters
 import unittest
 
 

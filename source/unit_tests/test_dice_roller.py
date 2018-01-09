@@ -16,6 +16,5 @@ class TestDiceRoller(unittest.TestCase):
         self.assertEqual(roller.success_threshold, 5)
 
 
-all_tests = unittest.TestSuite()
-all_tests.addTest(TestDiceRoller('test_good_default_threshold_taken'))
-all_tests.addTest(TestDiceRoller('test_changing_threshold_affects_successes'))
+if __name__ is '__main__':
+    unittest.main()

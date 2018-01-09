@@ -6,8 +6,10 @@ class ThresholdManipulator:
         self.new_threshold = 7
 
     def change_success_threshold(self, threshold):
+        previous_threshold = self.new_threshold
         self.__prepare_threshold(threshold)
         if self.new_threshold < 1 or self.new_threshold > 10:
+            self.new_threshold = previous_threshold
             return self.__throw_invalid_threshold()
         roll_parameters.roll_parameters['success_threshold'] = self.new_threshold
         return self.__threshold_changed()

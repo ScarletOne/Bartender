@@ -4,7 +4,6 @@ python:
   - "3.6"
   - "nightly"
 install:
-  - sudo apt-get python3-pip
-  - sudo pip install -U discord.py
+  - pip install -U discord.py
 script:
-  - run unit_tests/test_bartender.py
+  - pytest

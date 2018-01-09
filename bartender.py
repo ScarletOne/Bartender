@@ -1,4 +1,5 @@
 import discord
+import client_id
 from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
@@ -50,5 +51,4 @@ async def on_message(message):
     if message_starts_with(message, 'pomusz'):
         await client.send_message(message.channel, manual.show_help())
 
-
-client.run("Mzg5NzYyMDM5MTc1OTcwODI2.DRARvQ.rYou-m3OjU5c6zvXd4_seyb5GUw")
+client.run(client_id.address)

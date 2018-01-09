@@ -1,5 +1,5 @@
 import unittest
-from unit_tests import test_dice_roller,\
+from source.unit_tests import test_dice_roller,\
     test_threshold_manipulator
 
 

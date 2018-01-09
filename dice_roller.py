@@ -7,65 +7,68 @@ class DiceRoller:
 
     def __init__(self):
         self.success_threshold = roll_parameters.roll_parameters['success_threshold']
-        self.results = [0]
-        self.dice_number = 0
-
         self.successes = 0
         self.failures = 0
-
         self.tens = 0
-
-        self.critical_failures = 0
-        self.glitch = False
 
     # Dice Rolling
     def roll_dice(self, message):
-        self.__prepare_dice(message)
-        self.__roll_multiple_times()
-        self.__evaluate_roll_output()
-        self.__check_glitch()
+        dice_number = self.__prepare_dice(message)
+        results = self.__roll_multiple_times(dice_number)
+        self.__evaluate_roll_output(results)
+        self.__glitch_exists(dice_number, results)
         self.__export_roll_parameters()
-        return self.__output_roll_result()
+        return self.__output_roll_result(dice_number, results)
 
-    def __prepare_dice(self, message):
+    @staticmethod
+    def __prepare_dice(message):
         args = message.content.split(" ")
+        dice_number = 0
         if len(args) > 1 and args[1].isdigit():
-            self.dice_number = int(args[1])
+            dice_number = int(args[1])
+        return dice_number
 
     @staticmethod
     def __roll_10s():
         return random.randrange(1, 11)
 
-    def __roll_multiple_times(self):
-        self.results = [0] * self.dice_number
-        for i in range(self.dice_number):
-            self.results[i] = self.__roll_10s()
+    def __roll_multiple_times(self, dice_number):
+        results = [0] * dice_number
+        for i in range(dice_number):
+            results[i] = self.__roll_10s()
+        return results
 
-    def __evaluate_roll_output(self):
-        for i in range(len(self.results)):
-            if self.results[i] >= self.success_threshold:
+    def __evaluate_roll_output(self, results):
+        for i in range(len(results)):
+            if results[i] >= self.success_threshold:
                 self.successes += 1
-                if self.results[i] is 10:
+                if results[i] is 10:
                     self.tens += 1
             else:
                 self.failures += 1
-                if self.results[i] is 1:
-                    self.critical_failures += 1
 
-    def __check_glitch(self):
-        self.glitch = self.critical_failures >= self.dice_number / 2
+    @staticmethod
+    def __count_critical_failures(results):
+        critical_failures = 0
+        for i in range(len(results)):
+            if results[i] is 1:
+                critical_failures +=1
+        return critical_failures
 
-    def __output_roll_result(self):
+    def __glitch_exists(self, dice_number, results):
+        return self.__count_critical_failures(results) >= dice_number / 2
+
+    def __output_roll_result(self, dice_number, results):
         result = '```'
-        result += 'Rzuciłem ' + str(self.dice_number) + ' kośćmi\n'
+        result += 'Rzuciłem ' + str(dice_number) + ' kośćmi\n'
         result += 'Sukcesy rzutu liczyłem od ' + str(self.success_threshold) + '\n'
-        result += 'Wyniki rzutu:\n' + str(self.results[0:]) + '\n'
+        result += 'Wyniki rzutu:\n' + str(results[0:]) + '\n'
         result += 'Liczba sukcesów: ' + str(self.successes) + '\n'
-        if self.glitch:
-            result += 'Zgrzyt!\n'
-        result += '```'
-        if self.glitch:
+        if self.__glitch_exists(dice_number, results):
+            result += 'Zgrzyt! ```\n'
             result += gif_database.random_fail()
+        else:
+            result += '```'
         return result
 
     def __export_roll_parameters(self):

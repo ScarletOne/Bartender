@@ -5,5 +5,5 @@ python:
 install:
   - pip install coverage
 script:
-  - python -m unittest
+  - python -m unittest discover
 after_success: coverage report

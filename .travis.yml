@@ -4,6 +4,7 @@ python:
 install:
   - pip install coveralls
 script:
-  - python3 test_bartender.py -v
+  - cd unit_tests
+  - python -m unittest discover
 after_success:
   coveralls

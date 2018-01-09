@@ -48,7 +48,7 @@ async def on_message(message):
         await client.send_message(message.channel, result)
     if message_starts_with(message, 'rzuc') or message_starts_with(message, 'rzuć'):
         print('Stół do rzucania kośćmi gotowy!')
-        result = roller.roll_dice(message)
+        result = roller.roll_dice(extract_content(message))
         await client.send_message(message.channel, result)
     if message_starts_with(message, 'powiedz'):
         args = message.content.split(" ")

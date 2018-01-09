@@ -12,8 +12,8 @@ class DiceRoller:
         self.tens = 0
 
     # Dice Rolling
-    def roll_dice(self, message):
-        dice_number = self.__prepare_dice(message)
+    def roll_dice(self, requested_number_of_dice):
+        dice_number = self.__prepare_dice(requested_number_of_dice)
         results = self.__roll_multiple_times(dice_number)
         self.__evaluate_roll_output(results)
         self.__glitch_exists(dice_number, results)
@@ -21,11 +21,10 @@ class DiceRoller:
         return self.__output_roll_result(dice_number, results)
 
     @staticmethod
-    def __prepare_dice(message):
-        args = message.content.split(" ")
+    def __prepare_dice(requested_number_of_dice):
         dice_number = 0
-        if len(args) > 1 and args[1].isdigit():
-            dice_number = int(args[1])
+        if len(requested_number_of_dice) > 1 and requested_number_of_dice[1].isdigit():
+            dice_number = int(requested_number_of_dice[1])
         return dice_number
 
     @staticmethod

@@ -1,4 +1,4 @@
-from source import threshold_manipulator
+import threshold_manipulator
 import unittest
 
 

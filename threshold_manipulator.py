@@ -1,4 +1,4 @@
-from source import roll_parameters
+import roll_parameters
 
 
 class ThresholdManipulator:

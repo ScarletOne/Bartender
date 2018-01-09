@@ -1,5 +1,5 @@
-from source import dice_roller,\
-    roll_parameters
+import dice_roller
+import roll_parameters
 import unittest
 
 

@@ -1,9 +1,8 @@
-sudo: required
 language: python
 python:
   - "3.6"
-install:
-  - pip install coverage
+#install:
+#  - pip install coverage
 script:
-  - python -m unittest unit_tests/test_bartender.py
-after_success: coverage report
+  - python unit_tests/test_bartender.py
+#after_success: coverage report

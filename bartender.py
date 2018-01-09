@@ -1,9 +1,9 @@
 import discord
 from discord.ext import commands
-from source import client_id
-import dice_roller
-import threshold_manipulator
-import manual
+from source import client_id,\
+    dice_roller,\
+    threshold_manipulator,\
+    manual
 
 Client = discord.Client()
 client = commands.Bot(command_prefix="?")

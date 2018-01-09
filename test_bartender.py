@@ -1,6 +1,6 @@
 import unittest
-import test_dice_roller
-import test_threshold_manipulator
+from unit_tests import test_dice_roller,\
+    test_threshold_manipulator
 
 
 def main():

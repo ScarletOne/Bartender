@@ -13,4 +13,4 @@ python:
 install:
   - pip install -r discord.py
 script:
-  - pytest
+  - run unit_tests/test_bartender.py

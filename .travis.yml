@@ -4,5 +4,5 @@ python:
 install:
   - pip install coverage
 script:
-  - python test_bartender.py
+  - python -m unittest test_bartender.py
 after_success: coverage report

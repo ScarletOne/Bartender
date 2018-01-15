@@ -15,6 +15,16 @@ class TestDiceRoller(unittest.TestCase):
         roller = dice_roller.DiceRoller()
         self.assertEqual(roller.success_threshold, 5)
 
+    def test_reset_works_properly_in_dice_roller(self):
+        roller = dice_roller.DiceRoller()
+        roller.successes = 10
+        roller.failures = 10
+        roller.tens = 15
+        roller.reset_dice_roller()
+        self.assertEqual(roller.successes, 0)
+        self.assertEqual(roller.failures, 0)
+        self.assertEqual(roller.tens, 0)
+
 
 if __name__ is '__main__':
     unittest.main()

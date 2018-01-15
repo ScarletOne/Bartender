@@ -31,6 +31,13 @@ class TestThresholdManipulator(unittest.TestCase):
         manipulator.change_success_threshold(['command invoker', '1530'])
         self.assertTrue(manipulator.new_threshold is 6)
 
+    def test_reset_works_properly_in_threshold_manipulator(self):
+        manipulator = threshold_manipulator.ThresholdManipulator()
+        manipulator.change_success_threshold(['command invoker', '6'])
+        self.assertTrue(manipulator.new_threshold is 6)
+        manipulator.reset_threshold()
+        self.assertTrue(manipulator.new_threshold is 7)
+
 
 if __name__ is '__main__':
     unittest.main()

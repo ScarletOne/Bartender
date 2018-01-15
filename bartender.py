@@ -49,9 +49,6 @@ async def on_message(message):
         print('Stół do rzucania kośćmi gotowy!')
         result = roller.roll_dice(extract_content(message))
         await client.send_message(message.channel, result)
-    if message_starts_with(message, 'powiedz'):
-        args = message.content.split(" ")
-        await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
     if message_starts_with(message, 'pomusz'):
         await client.send_message(message.channel, manual.show_help())
     if message_starts_with(message, 'inicjatywa'):

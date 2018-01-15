@@ -3,6 +3,8 @@
 
 class Character:
     name = 'Karl Gustav Gustavsson \"Szkarłatny Lew\"'
+    race = 'Człowiek'
+    social_status = 'Dowódca najemników'
     drama = 2
     motivations = {
         'Moi ludzie, moja rodzina, moja kompania to jest wszystko co cenię i kocham i chcę tego bronić. Aż po grób': 3,
@@ -41,6 +43,7 @@ class Character:
         'Jednooki'
     ]
 
+    '''Skill name: (ranks: threshold)'''
     skills = {
         'Miecze': 11,
         'Broń drzewcowa': 10,
@@ -103,6 +106,7 @@ class Character:
 
     def display_character(self):
         character = '```' + self.name + '```\n'
+        character += '```Rasa: ' + self.race + '\nStatus społeczny: ' + self.social_status + '\n```'
         character += self.__display_motivations()
         character += self.__display_attributes()
         character += self.__display_adv_attributes()

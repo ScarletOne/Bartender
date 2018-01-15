@@ -52,5 +52,7 @@ async def on_message(message):
         await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
     if message_starts_with(message, 'pomusz'):
         await client.send_message(message.channel, manual.show_help())
+    if message_starts_with(message, 'inicjatywa'):
+        await client.send_message(message.channel, 'still under work')
 
 client.run(client_id.address)

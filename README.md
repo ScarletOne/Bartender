@@ -16,7 +16,3 @@ co ma robić Karczmarz:
     >gify przy porażce
 
     >gify na dramie
-    
-    
-    
-   #<a href="https://github.com/ScarletOne/Bartender"><img src="https://travis-ci.org/ScarletOne/Bartender.svg?branch=master" /></a>

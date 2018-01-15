@@ -2,6 +2,7 @@
 
 
 class Character:
+    nickname = 'Lew'
     name = 'Karl Gustav Gustavsson \"Szkarłatny Lew\"'
     race = 'Człowiek'
     social_status = 'Dowódca najemników'

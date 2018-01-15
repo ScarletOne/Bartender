@@ -35,12 +35,22 @@ def extract_content(message):
     return args
 
 
+def reset_roll_parameters(dice_roller_to_be_reset, threshold_manipulator_to_be_reset):
+    dice_roller_to_be_reset.reset_dice_roller()
+    threshold_manipulator_to_be_reset.reset_threshold()
+    return '```Parametry rzutów zostały ustawione na domyślne```'
+
+
 @client.event
 async def on_message(message):
     roller = dice_roller.DiceRoller()
     manipulator = threshold_manipulator.ThresholdManipulator()
     char = character.Character()
 
+    if message_starts_with(message, 'pomusz'):
+        await client.send_message(message.channel, manual.show_help())
+    if message_starts_with(message, 'reset'):
+        await client.send_message(message.channel, reset_roll_parameters(roller, manipulator))
     if message_starts_with(message, 'sukcesy'):
         print('Nowy próg sukcesu')
         result = manipulator.change_success_threshold(extract_content(message))
@@ -49,8 +59,6 @@ async def on_message(message):
         print('Stół do rzucania kośćmi gotowy!')
         result = roller.roll_dice(extract_content(message))
         await client.send_message(message.channel, result)
-    if message_starts_with(message, 'pomusz'):
-        await client.send_message(message.channel, manual.show_help())
     if message_starts_with(message, 'inicjatywa'):
         await client.send_message(message.channel, 'still under work')
     if message_starts_with(message, 'postac'):

@@ -11,6 +11,12 @@ class DiceRoller:
         self.failures = 0
         self.tens = 0
 
+    def reset_dice_roller(self):
+        self.successes = 0
+        self.failures = 0
+        self.tens = 0
+        self.__export_roll_parameters()
+
     # Dice Rolling
     def roll_dice(self, requested_number_of_dice):
         dice_number = self.__prepare_dice(requested_number_of_dice)

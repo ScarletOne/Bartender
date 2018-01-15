@@ -54,6 +54,7 @@ async def on_message(message):
     if message_starts_with(message, 'inicjatywa'):
         await client.send_message(message.channel, 'still under work')
     if message_starts_with(message, 'postac'):
+        print('tymczasowo wyświetlam Lwa')
         await client.send_message(message.channel, char.display_character())
 
 client.run(client_id.address)

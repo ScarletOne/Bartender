@@ -4,6 +4,7 @@ import client_id
 import dice_roller
 import manual
 import threshold_manipulator
+import character
 
 Client = discord.Client()
 client = commands.Bot(command_prefix="?")
@@ -38,6 +39,7 @@ def extract_content(message):
 async def on_message(message):
     roller = dice_roller.DiceRoller()
     manipulator = threshold_manipulator.ThresholdManipulator()
+    char = character.Character()
 
     if message_starts_with(message, 'sukcesy'):
         print('Nowy próg sukcesu')
@@ -54,5 +56,7 @@ async def on_message(message):
         await client.send_message(message.channel, manual.show_help())
     if message_starts_with(message, 'inicjatywa'):
         await client.send_message(message.channel, 'still under work')
+    if message_starts_with(message, 'postac'):
+        await client.send_message(message.channel, char.display_character())
 
 client.run(client_id.address)

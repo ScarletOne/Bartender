@@ -87,18 +87,6 @@ class Character:
         'Etykieta': 5
     }
 
-    def display_character(self):
-        character = '```' + self.name + '```\n'
-        character += self.__display_motivations()
-        character += self.__display_attributes()
-        character += self.__display_adv_attributes()
-        character += self.__display_thresholds()
-        character += self.__display_traits()
-        character += self.__display_skills()
-        character += self.__display_languages()
-        character += self.__display_knowledge()
-        return character
-
     @staticmethod
     def __display_dict(dict_to_be_displayed):
         display_friendly_dict = ''
@@ -112,6 +100,18 @@ class Character:
         for member in array_to_be_displayed:
             display_friendly_array += member + '\n'
         return display_friendly_array
+
+    def display_character(self):
+        character = '```' + self.name + '```\n'
+        character += self.__display_motivations()
+        character += self.__display_attributes()
+        character += self.__display_adv_attributes()
+        character += self.__display_thresholds()
+        character += self.__display_traits()
+        character += self.__display_skills()
+        character += self.__display_languages()
+        character += self.__display_knowledge()
+        return character
 
     def __display_attributes(self):
         attr = '```ATRYBUTY:\n'

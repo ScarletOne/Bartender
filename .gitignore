@@ -3,3 +3,4 @@
 __pycache__/
 venv/
 client_id.py
+google_api_secret.json

@@ -64,6 +64,7 @@ class DiceRoller:
             output += 'Rzut ' + str(roll_count) + ' dramy:\n'
             output += '\tRzucono ' + str(roll[0]) + ' kości\n'
             output += '\tOto wyniki rzutów: \n\t' + str(roll[1][0:]) + '\n'
+            roll_count += 1
         return output
 
     @staticmethod

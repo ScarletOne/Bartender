@@ -1,8 +1,3 @@
-def say_description():
-    say_command = ' > Powiedz - powtórzę słowa, które chcesz \n'
-    return say_command
-
-
 def roll_description():
     roll_command = ' > Rzuć - rzucę daną liczbą kostek dziesięciościennych i policzę sukcesy\n'
     return roll_command
@@ -21,7 +16,6 @@ def change_success_description():
 def show_help():
     text_manual = '```To wam mogę zaoferować: \n'
     text_manual += help_description()
-    text_manual += say_description()
     text_manual += roll_description()
     text_manual += change_success_description()
     text_manual += '```'

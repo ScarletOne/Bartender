@@ -10,11 +10,13 @@ class DiceRoller:
         self.successes = 0
         self.failures = 0
         self.tens = 0
+        self.results = [(0, [0])]
 
     def reset_dice_roller(self):
         self.successes = 0
         self.failures = 0
         self.tens = 0
+        self.results = [[0]]
         self.__export_roll_parameters()
 
     # Dice Rolling
@@ -25,6 +27,26 @@ class DiceRoller:
         self.__glitch_exists(dice_number, results)
         self.__export_roll_parameters()
         return self.__output_roll_result(dice_number, results)
+
+    def roll_drama(self):
+        dice_number = roll_parameters.roll_parameters['tens'] + roll_parameters.roll_parameters['failures']
+        successes = roll_parameters.roll_parameters['successes']
+        self.reset_dice_roller()
+        while dice_number > 0:
+            results = self.__roll_multiple_times(dice_number)
+            self.__evaluate_roll_output(results)
+            successes += self.successes
+            dice_number = self.tens
+            self.__export_roll_parameters()
+        return self.__output_drama_result(successes)
+
+    @staticmethod
+    def __output_drama_result(successes):
+        result = '```'
+        result += 'Użyto dramy na poprzednim rzucie!\n'
+        result += 'Liczba sukcesów: ' + str(successes) + '\n'
+        result += '```'
+        return result
 
     @staticmethod
     def __prepare_dice(requested_number_of_dice):
@@ -57,7 +79,7 @@ class DiceRoller:
         critical_failures = 0
         for i in range(len(results)):
             if results[i] is 1:
-                critical_failures +=1
+                critical_failures += 1
         return critical_failures
 
     def __glitch_exists(self, dice_number, results):

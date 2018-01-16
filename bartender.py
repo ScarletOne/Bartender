@@ -75,7 +75,7 @@ async def on_message(message):
         char = character.Character()
         await client.send_message(message.channel, char.display_character())
     if message_starts_with(message, 'manewry'):
-        maneuvers_list = '' + maneuvers_database.display_maneuvers()
+        maneuvers_list = maneuvers_database.display_maneuvers()
         await client.send_message(message.channel, maneuvers_list)
 
 client.run(client_id.address)

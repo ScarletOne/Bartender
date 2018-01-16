@@ -24,6 +24,7 @@ class TestDiceRoller(unittest.TestCase):
         self.assertEqual(roller.successes, 0)
         self.assertEqual(roller.failures, 0)
         self.assertEqual(roller.tens, 0)
+        self.assertEqual(roller.results, [(0, [0])])
 
 
 if __name__ is '__main__':

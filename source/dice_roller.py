@@ -16,7 +16,7 @@ class DiceRoller:
         self.successes = 0
         self.failures = 0
         self.tens = 0
-        self.results = [[0]]
+        self.results = [(0, [0])]
         self.__export_roll_parameters()
 
     # Dice Rolling
@@ -25,28 +25,46 @@ class DiceRoller:
         results = self.__roll_multiple_times(dice_number)
         self.__evaluate_roll_output(results)
         self.__glitch_exists(dice_number, results)
+
+        self.results = [(dice_number, results)]
         self.__export_roll_parameters()
         return self.__output_roll_result(dice_number, results)
 
     def roll_drama(self):
         dice_number = roll_parameters.roll_parameters['tens'] + roll_parameters.roll_parameters['failures']
         successes = roll_parameters.roll_parameters['successes']
+        self.results = roll_parameters.roll_parameters['results']
         self.reset_dice_roller()
         while dice_number > 0:
             results = self.__roll_multiple_times(dice_number)
             self.__evaluate_roll_output(results)
+            self.results.append((dice_number, results))
             successes += self.successes
             dice_number = self.tens
             self.__export_roll_parameters()
+            self.tens = 0
+            self.successes = 0
         return self.__output_drama_result(successes)
 
-    @staticmethod
-    def __output_drama_result(successes):
+    def __output_drama_result(self, successes):
         result = '```'
         result += 'Użyto dramy na poprzednim rzucie!\n'
-        result += 'Liczba sukcesów: ' + str(successes) + '\n'
+        result += 'Rzucono ' + str(len(self.results)-1) + ' razy!\n'
+        result += 'Oto wyniki rzutów: \n'
+        result += self.__display_drama_results()
+        result += 'Sumaryczna liczba sukcesów wszystkich rzutów: ' + str(successes) + '\n'
         result += '```'
         return result
+
+    def __display_drama_results(self):
+        self.results.pop(0)
+        output = ''
+        roll_count = 1
+        for roll in self.results:
+            output += 'Rzut ' + str(roll_count) + ' dramy:\n'
+            output += '\tRzucono ' + str(roll[0]) + ' kości\n'
+            output += '\tOto wyniki rzutów: \n\t' + str(roll[1][0:]) + '\n'
+        return output
 
     @staticmethod
     def __prepare_dice(requested_number_of_dice):
@@ -102,3 +120,4 @@ class DiceRoller:
         roll_parameters.roll_parameters['successes'] = self.successes
         roll_parameters.roll_parameters['failures'] = self.failures
         roll_parameters.roll_parameters['tens'] = self.tens
+        roll_parameters.roll_parameters['results'] = self.results

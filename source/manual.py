@@ -3,6 +3,11 @@ def roll_description():
     return roll_command
 
 
+def drama_description():
+    drama_command = ' > Drama - przerzucę ostatni rzut według zasad Dramy w systemie Ostrza\n'
+    return drama_command
+
+
 def help_description():
     help_command = ' > Pomusz - wyświetlę wszystkie moje komendy\n'
     return help_command
@@ -16,7 +21,8 @@ def change_success_description():
 def show_help():
     text_manual = '```To wam mogę zaoferować: \n'
     text_manual += help_description()
-    text_manual += roll_description()
     text_manual += change_success_description()
+    text_manual += roll_description()
+    text_manual += drama_description()
     text_manual += '```'
     return text_manual

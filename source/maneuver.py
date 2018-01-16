@@ -12,5 +12,10 @@ class Maneuver:
 
     def display_maneuver(self):
         print('displaying ' + self.name)
-        display = '\t>' + self.name + '(' + self.cost + ')'
-        return display
+        info = '\t>' + self.name + '(' + self.cost + ')'
+        return info
+
+    def display_detailed_info(self):
+        info = self.display_maneuver()
+        info += ' - ' + self.description
+        return info
